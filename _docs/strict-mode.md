@@ -101,10 +101,33 @@ Strict mode is available for a subset of the drafts the library supports.
 | Draft 6       | `http://json-schema.org/draft-06/schema#`       | Supported (default)        |
 | Draft 7       | `http://json-schema.org/draft-07/schema#`       | Supported                  |
 | Draft 2019-09 | `https://json-schema.org/draft/2019-09/schema`  | Supported as of 6.10.0     |
-| Draft 2020-12 | `https://json-schema.org/draft/2020-12/schema`  | Not supported yet          |
+| Draft 2020-12 | `https://json-schema.org/draft/2020-12/schema`  | Supported as of 6.16.0     |
 
 This table describes strict mode only. Draft 3 and Draft 4 schemas remain fully usable in normal validation — they
 simply have no dedicated strict mode constraint set.
+
+Draft 2020-12 does not support `$dynamicRef` and `$dynamicAnchor`, `unevaluatedItems` and `$vocabulary` yet.
+
+## Format in Draft 2020-12
+
+As of Draft 2020-12, the `format` keyword is an annotation by default: a value that does not match its format is
+still valid. Enable `Constraint::CHECK_MODE_FORMAT_ASSERTION` to validate it, as the other drafts do by default.
+`Constraint::CHECK_MODE_DISABLE_FORMAT` takes precedence when both flags are set. The other drafts are not affected by
+`CHECK_MODE_FORMAT_ASSERTION`.
+
+```php
+<?php
+
+use JsonSchema\Constraints\Constraint;
+use JsonSchema\Validator;
+
+$validator = new Validator();
+$validator->validate(
+    $data,
+    $schema,
+    Constraint::CHECK_MODE_NORMAL | Constraint::CHECK_MODE_STRICT | Constraint::CHECK_MODE_FORMAT_ASSERTION
+);
+```
 
 ## Schemas without a $schema keyword
 

@@ -122,7 +122,7 @@ if ($validator->isValid()) {
 
 ## Validating using strict mode
 Strict mode validates your document with the constraint set of a specific JSON Schema draft, instead of the
-draft-agnostic default. It supports Draft 6, Draft 7 and Draft 2019-09.
+draft-agnostic default. It supports Draft 6, Draft 7, Draft 2019-09 and Draft 2020-12.
 
 See [Strict mode](strict-mode.html) for how to enable it and how the draft is selected.
 

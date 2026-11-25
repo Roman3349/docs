@@ -42,5 +42,6 @@ $validator->validate(
 | `Constraint::CHECK_MODE_ONLY_REQUIRED_DEFAULTS` |   | `0x00000080` | When applying defaults, only set values that are required                |
 | `Constraint::CHECK_MODE_VALIDATE_SCHEMA`        |   | `0x00000100` | Validate the schema as well as the provided document                     |
 | `Constraint::CHECK_MODE_STRICT`                 |   | `0x00000200` | Validate the document using the constraint set of the draft named in `$schema` |
+| `Constraint::CHECK_MODE_FORMAT_ASSERTION`       |   | `0x00000800` | Validate "format" constraints in Draft 2020-12, where they are annotations by default |
 
-The `CHECK_MODE_STRICT` flag is covered in more detail on the [Strict mode](strict-mode.html) page.
+The `CHECK_MODE_STRICT` and `CHECK_MODE_FORMAT_ASSERTION` flags are covered in more detail on the [Strict mode](strict-mode.html) page.
